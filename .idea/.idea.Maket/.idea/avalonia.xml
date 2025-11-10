@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AvaloniaProject">
+    <option name="projectPerEditor">
+      <map>
+        <entry key="Maket/App.axaml" value="Maket/Maket.csproj" />
+        <entry key="Maket/MAinWindow.axaml" value="Maket/Maket.csproj" />
+        <entry key="Maket/MainWindow.axaml" value="Maket/Maket.csproj" />
+        <entry key="Maket/Window/Login.axaml" value="Maket/Maket.csproj" />
+      </map>
+    </option>
+  </component>
+</project>
