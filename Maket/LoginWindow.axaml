@@ -4,7 +4,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="Maket.LoginWindow"
-        Title="Окно Авторизации">
+        Title="Окно Авторизации"
+        MinHeight="450"
+        MinWidth="600">
     <StackPanel>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
         <TextBlock Text="Авторизация"

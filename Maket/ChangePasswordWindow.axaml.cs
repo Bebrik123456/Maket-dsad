@@ -4,9 +4,9 @@ using Avalonia.Markup.Xaml;
 
 namespace Maket;
 
-public partial class MainWindow : Window
+public partial class ChangePasswordWindow : Window
 {
-    public MainWindow()
+    public ChangePasswordWindow()
     {
         InitializeComponent();
     }
