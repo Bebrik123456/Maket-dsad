@@ -9,27 +9,31 @@
         MinWidth="600">
     <StackPanel>
         <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-        <TextBlock Text="Авторизация"
+        <TextBlock 
+                   Text="Авторизация"
                    HorizontalAlignment="Center"
                    Margin=" 00 40 0  0"
                    FontSize="35"
                    FontFamily="Calibri"
                    Foreground="#333333"
         />
-        <TextBox Margin=" 0  20 0 0"
+        <TextBox Name="PochtaTextbox"
+            Margin=" 0  20 0 0"
             MinWidth="300"     
             MaxWidth="400"
             Watermark="Логин"
             HorizontalContentAlignment="Center"
             FontSize="17"/>
-        <TextBox Margin=" 0  50 0 0"
+        <TextBox Name="PasswordTextBox"
+                 Margin=" 0  50 0 0"
                  MinWidth="300"     
                  MaxWidth="400"
                  Watermark="Пароль"
                  HorizontalContentAlignment="Center"
                  FontSize="17"/>
         
-        <Button MinWidth="200" 
+        <Button Click="LoginButton"
+                MinWidth="200" 
                 MinHeight="50"
                 HorizontalAlignment="Center"
                 Margin="0 50 0 0 "
@@ -39,7 +43,10 @@
                 VerticalContentAlignment="Center"
                 FontSize="20"
                 Foreground="Azure"/>
-            
+            <Label HorizontalAlignment="Center"
+                   VerticalAlignment="Center"
+                   Name="Label"
+                   Foreground="Red"/>
       </StackPanel>
     </StackPanel>
 </Window>
