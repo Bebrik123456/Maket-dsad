@@ -1,0 +1,48 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Maket.MainWindow"
+        Title="MainWindow">
+    <StackPanel>
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Добро пожаловать!"
+                       HorizontalAlignment="Center"
+                       Margin="0 40 0 0"
+                       FontSize="35"
+                       FontFamily="Calibri"
+                       Foreground="#333333"/>
+            <TextBlock x:Name="WelcomeTextBlock" 
+                       Text="Имя Фамилия"
+                       HorizontalAlignment="Center"
+                       Margin="0 20 0 0"
+                       FontSize="20"
+                       FontFamily="Calibri"
+                       Foreground="#007ACC"/>
+            <TextBlock x:Name="RoleTextBlock" 
+                       Text="Роль: Пользователь"
+                       HorizontalAlignment="Center"
+                       Margin="0 10 0 0"
+                       FontSize="16"
+                       FontFamily="Calibri"
+                       Foreground="#333333"/>
+
+            <!-- Кнопка "Управление пользователями" будет видна только администратору -->
+            <!-- В коде (MainWindow.axaml.cs) вы будете управлять её видимостью -->
+            <Button x:Name="ManageUsersButton"
+                    MinWidth="250"
+                    MinHeight="40"
+                    HorizontalAlignment="Center"
+                    Margin="0 50 0 0"
+                    Background="#007ACC"
+                    Content="Управление пользователями"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    FontSize="16"
+                    Foreground="Azure"
+                    IsVisible="False" /> <!-- Скрыта по умолчанию -->
+
+        </StackPanel>
+    </StackPanel>
+</Window>
