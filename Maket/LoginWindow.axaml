@@ -2,51 +2,90 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="700" d:DesignHeight="500"
         x:Class="Maket.LoginWindow"
-        Title="Окно Авторизации"
-        MinHeight="450"
-        MinWidth="600">
-    <StackPanel>
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-        <TextBlock 
-                   Text="Авторизация"
-                   HorizontalAlignment="Center"
-                   Margin=" 00 40 0  0"
-                   FontSize="35"
-                   FontFamily="Calibri"
-                   Foreground="#333333"
-        />
-        <TextBox Name="PochtaTextbox"
-            Margin=" 0  20 0 0"
-            MinWidth="300"     
-            MaxWidth="400"
-            Watermark="Логин"
-            HorizontalContentAlignment="Center"
-            FontSize="17"/>
-        <TextBox Name="PasswordTextBox"
-                 Margin=" 0  50 0 0"
-                 MinWidth="300"     
-                 MaxWidth="400"
-                 Watermark="Пароль"
-                 HorizontalContentAlignment="Center"
-                 FontSize="17"/>
-        
-        <Button Click="LoginButton"
-                MinWidth="200" 
-                MinHeight="50"
-                HorizontalAlignment="Center"
-                Margin="0 50 0 0 "
-                Background="#007ACC"
-                Content="Войти"
-                HorizontalContentAlignment="Center" 
-                VerticalContentAlignment="Center"
-                FontSize="20"
-                Foreground="Azure"/>
-            <Label HorizontalAlignment="Center"
-                   VerticalAlignment="Center"
-                   Name="Label"
-                   Foreground="Red"/>
-      </StackPanel>
-    </StackPanel>
+        Title="Авторизация — Система управления ИТ-проектами"
+        MinHeight="480"
+        MinWidth="580">
+
+    <!-- Основной фон -->
+    <Border Background="#F0F2F5"> <!-- Светло-серый фон окна -->
+        <Grid Margin="30">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/> 
+                <RowDefinition Height="*"/>    
+            </Grid.RowDefinitions>
+
+            <!-- Верхняя часть (Заголовок/название системы) -->
+            <Border Grid.Row="0" Background="#2C3E50" Padding="20" CornerRadius="8" HorizontalAlignment="Stretch">
+                <StackPanel HorizontalAlignment="Center">
+                    <TextBlock Text="Система управления ИТ-проектами" 
+                               HorizontalAlignment="Center"
+                               FontSize="24"
+                               FontWeight="SemiBold"
+                               Foreground="#ECF0F1"/> 
+                   
+                </StackPanel>
+            </Border>
+            
+            <Border Grid.Row="1" Background="#FFFFFF" CornerRadius="10" BorderBrush="#BDC3C7" BorderThickness="1" Margin="0,20,0,0">
+                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" Spacing="15">
+                    <TextBlock 
+                               Text="Вход в систему"
+                               HorizontalAlignment="Center"
+                               Margin="0 20 0 0"
+                               FontSize="26"
+                               FontFamily="Segoe UI"
+                               FontWeight="SemiBold"
+                               Foreground="#2C3E50"  
+                    />
+                    <TextBox Name="PochtaTextbox"
+                        Margin="0 15 0 0"
+                        MinWidth="260"     
+                        MaxWidth="340"
+                        Watermark="Введите логин"
+                        HorizontalContentAlignment="Center"
+                        FontSize="16"
+                        Background="#FAFAFA"
+                        BorderBrush="#BDC3C7"  
+                        BorderThickness="1"
+                        Padding="8"/>
+                    <TextBox Name="PasswordTextBox" 
+                                 Margin="0 15 0 0"
+                                 MinWidth="260"     
+                                 MaxWidth="340"
+                                 Watermark="Введите пароль"
+                                 HorizontalContentAlignment="Center"
+                                 FontSize="16"
+                                 Background="#FAFAFA" 
+                                 BorderBrush="#BDC3C7"  
+                                 BorderThickness="1"
+                                 Padding="8"/>
+                    
+                    <Button Click="LoginButton"
+                            MinWidth="180" 
+                            MinHeight="42"
+                            HorizontalAlignment="Center"
+                            Margin="0 20 0 0 "
+                            Background="#3498DB" 
+                            Content="Войти"
+                            HorizontalContentAlignment="Center" 
+                            VerticalContentAlignment="Center"
+                            FontSize="16"
+                            FontWeight="Medium"
+                            Foreground="#FFFFFF" 
+                            BorderThickness="0"/>
+                    
+                    <Label Name="Label"
+                           HorizontalAlignment="Center"
+                           VerticalAlignment="Center"
+                           Foreground="DarkRed" 
+                           Margin="0,10,0,0"
+                           FontSize="14"
+                    
+                           HorizontalContentAlignment="Center"/> <!-- Центрируем текст внутри Label -->
+                </StackPanel>
+            </Border>
+        </Grid>
+    </Border>
 </Window>

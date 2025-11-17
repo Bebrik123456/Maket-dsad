@@ -11,27 +11,26 @@ using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Avalonia.Input;
+using Maket.Classes;
 using MySql.Data.MySqlClient;
 namespace Maket;
 
 public partial class LoginWindow : Window
 {
-    // Это временная заглушка. На экзамене счётчик должен быть в БД.
     private int ExeptionCount = 0;
-    // Добавим переменную для хранения текущего логина, чтобы сбрасывать счётчик при смене логина
+    
     private string _currentAttemptedLogin = "";
 
     public LoginWindow()
     {
         InitializeComponent();
     }
-    
-    
-    
+
     private async void LoginButton(object sender, RoutedEventArgs e)
     {
         await MailCheck();
     }
+
     private async Task MailCheck()
     {
         string email = PochtaTextbox.Text;
@@ -44,12 +43,11 @@ public partial class LoginWindow : Window
 
                 if (b.Length >= 1)
                 {
-                    string stringconnection =
-                        "Server=localhost;Database=it_project_management_simple;User Id=root;Password=;";
-                    string query = "SELECT login,password_hash  FROM users WHERE `login` = @username AND `password_hash` = @password";
+                    string stringconnection = "Server=localhost;Database=it_project_management_simple;User Id=root;Password=;";
+                    string query = "SELECT login,password_hash,role  FROM users WHERE `login` = @username AND `password_hash` = @password ";
                     string passwordDB = PasswordTextBox.Text;
                     string loginDB = PochtaTextbox.Text;
-
+                    
                     MySqlConnection con = new MySqlConnection(stringconnection);
                     await con.OpenAsync();
 
@@ -57,16 +55,31 @@ public partial class LoginWindow : Window
                     cmd.Parameters.AddWithValue("@username", loginDB);
                     cmd.Parameters.AddWithValue("@password", passwordDB);
 
+
                     MySqlDataReader reader = cmd.ExecuteReader();
                     if (reader.HasRows)
-                    {
-                        Hide();
-                        MainWindow empty = new MainWindow();
-                        empty.Show();
-                        this.Close();
+                    {   
+                        reader.Read();
+                        string userRole = reader["role"].ToString(); 
+                        Console.WriteLine(userRole);
+                        DataUser loadedUserData = await LoadUserDataAndSetSession(loginDB, userRole);
+
+                        if (loadedUserData != null) 
+                        {
+                            Hide();
+                            MainWindow mainWindow = new MainWindow(loadedUserData);
+                            mainWindow.Show();
+                            this.Close();
+                        }
+                        else
+                        {
+                            Console.WriteLine("Ошибка серьезная ошибка");
+                            this.Close();
+                        }
                     }
                     else
-                    {  Label.Content = "Неправильно введен логин или пароль";
+                    {
+                        Label.Content = "Неправильно введен логин или пароль";
                         ExeptionCount++;
                     }
                 }
@@ -78,18 +91,25 @@ public partial class LoginWindow : Window
             }
             else
             {
-              Console.WriteLine("Количество ошибок больше допустимого");
-              this.Close();
+                Console.WriteLine("Количество ошибок больше допустимого");
+                this.Close();
             }
         }
         catch (Exception ex)
-        {Console.WriteLine(ex.Message);
+        {
+            Console.WriteLine(ex.Message);
+            Label.Content = "Ошибка на стороне сервера";
         }
     }
 
 
-    private void PasswordTextBox_OnKeyDown(object? sender, KeyEventArgs e)
+    public async Task<DataUser> LoadUserDataAndSetSession(string loginDB,string role)
     {
-        PasswordTextBox.Text = "";
+        DataUser user = new DataUser();
+        user.UserName = loginDB;
+        user.Role = role;
+        return user; 
     }
+
+
 }

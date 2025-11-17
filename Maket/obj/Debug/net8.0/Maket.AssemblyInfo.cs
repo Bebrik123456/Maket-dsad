@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Maket")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+199ca7aefff8825fbe915e8a68ac555ccc906d35")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+30cf16392e633512afa5b96cd551caada7ee7fb2")]
 [assembly: System.Reflection.AssemblyProductAttribute("Maket")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Maket")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

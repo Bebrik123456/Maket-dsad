@@ -13,7 +13,7 @@
                        FontSize="35"
                        FontFamily="Calibri"
                        Foreground="#333333"/>
-            <TextBlock x:Name="WelcomeTextBlock" 
+            <TextBlock x:Name="NameTextBlock" 
                        Text="Имя Фамилия"
                        HorizontalAlignment="Center"
                        Margin="0 20 0 0"
@@ -41,7 +41,8 @@
                     VerticalContentAlignment="Center"
                     FontSize="16"
                     Foreground="Azure"
-                    IsVisible="False" /> <!-- Скрыта по умолчанию -->
+                    IsVisible="False"
+                    Click="ToUserManagment"/> <!-- Скрыта по умолчанию -->
 
         </StackPanel>
     </StackPanel>
