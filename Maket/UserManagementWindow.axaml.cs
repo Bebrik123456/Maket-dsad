@@ -22,8 +22,7 @@ namespace Maket;
 
 public partial class UserManagementWindow : Window
 {
-    private readonly string _connectionString =
-        "Server=localhost;Database=it_project_management_simple;User Id=root;Password=;"; 
+    private readonly string _connectionString = "Server=localhost;Database=it_project_management_simple;User Id=root;Password=;"; 
 
 
     public UserManagementWindow()
@@ -56,7 +55,7 @@ public partial class UserManagementWindow : Window
                 {
                     using (var reader = await command.ExecuteReaderAsync()) // Выполняем запрос асинхронно
                     {
-                        while (await reader.ReadAsync()) // Читаем результат асинхронно
+                        while (await reader.ReadAsync()) 
                         {
                             var emp = new Employee
                             {
@@ -122,7 +121,11 @@ public partial class UserManagementWindow : Window
 
     public void UpdateButton(object sender, RoutedEventArgs e)
     {
-        LoadData();
+        
+      //  LoadData();
+      UserManagementWindow userManagementWindow = new UserManagementWindow();
+      userManagementWindow.Show();
+      this.Close();
     }
 
 }

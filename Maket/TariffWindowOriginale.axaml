@@ -1,15 +1,11 @@
-<!-- Views/ProjectWindow.axaml -->
 <Window xmlns="https://github.com/avaloniaui"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="900" d:DesignHeight="650"
-        x:Class="Maket.TariffWindow"
-        Title="Управление проектами — Система управления ИТ-проектами"
-        MinWidth="800"
-        MinHeight="600">
-
-    <Grid Background="#F0F8FF" Margin="15">
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="Maket.TariffWindowOriginale"
+        Title="TariffWindowOriginale">
+        <Grid Background="#F0F8FF" Margin="15">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
@@ -18,7 +14,7 @@
 
         <!-- Заголовок -->
         <Border Grid.Row="0" Background="#2F4F4F" CornerRadius="5" Margin="0,0,0,15">
-            <TextBlock Text="Управление проектами" FontSize="26" Margin="10" HorizontalAlignment="Center"
+            <TextBlock Text="Управление тарифами" FontSize="26" Margin="10" HorizontalAlignment="Center"
                        Foreground="White" FontWeight="Bold" />
         </Border>
 
@@ -30,69 +26,74 @@
                 <ColumnDefinition Width="*" MinWidth="250" />
             </Grid.ColumnDefinitions>
 
-            <!-- Список проектов -->
+            <!-- Список тарифов -->
             <Border Grid.Column="0" BorderBrush="#556B2F" BorderThickness="2" Background="#F5FFFA" CornerRadius="5">
-                <ListBox x:Name="ProjectsListBox"
+                <ListBox x:Name="TariffsListBox"
                          Margin="10"
                          Background="White"
                          BorderThickness="0"
-                         SelectionChanged="OnProjectSelectionChanged" /> <!-- Добавлен обработчик -->
+                         SelectionChanged="OnTariffSelectionChanged" />
             </Border>
 
             <!-- Разделитель -->
             <Border Grid.Column="1" Background="#556B2F" CornerRadius="2" />
 
-            <!-- Форма управления проектом -->
+            <!-- Форма управления -->
             <Border Grid.Column="2" BorderBrush="#8B0000" BorderThickness="2" Background="#FFF0F5" CornerRadius="5"
                     Margin="15,0,0,0">
                 <DockPanel>
-                    <TextBlock DockPanel.Dock="Top" Text="Редактирование проекта" Margin="10,5,0,10"
+                    <TextBlock DockPanel.Dock="Top" Text="Редактирование тарифа" Margin="10,5,0,10"
                                FontWeight="Bold" Foreground="#8B0000" />
                     <StackPanel DockPanel.Dock="Bottom" Spacing="10" Margin="15">
                         <!-- Поля для редактирования -->
-                        <TextBlock Text="Название проекта" Foreground="#2F4F4F" />
-                        <TextBox x:Name="ProjectNameTextBox" Watermark="Введите название проекта" Background="White"
+                        <TextBlock Text="Название тарифа" Foreground="#2F4F4F" />
+                        <TextBox x:Name="TariffNameTextBox" Watermark="Введите название тарифа" Background="White"
                                  BorderBrush="#8B0000" />
 
-                        <TextBlock Text="Клиент" Foreground="#2F4F4F" />
-                        <ComboBox x:Name="ClientComboBox" Background="White" BorderBrush="#8B0000" />
+                        <TextBlock Text="Мин. кол-во компьютеров" Foreground="#2F4F4F" />
+                        <TextBox x:Name="MinComputersTextBox" Watermark="Введите мин. кол-во" Background="White"
+                                 BorderBrush="#8B0000" />
 
-                        <TextBlock Text="Менеджер проекта" Foreground="#2F4F4F" />
-                        <ComboBox x:Name="ManagerComboBox" Background="White" BorderBrush="#8B0000" />
+                        <TextBlock Text="Макс. кол-во компьютеров" Foreground="#2F4F4F" />
+                        <TextBox x:Name="MaxComputersTextBox" Watermark="Введите макс. кол-во" Background="White"
+                                 BorderBrush="#8B0000" />
 
-                        <TextBlock Text="Статус (фаза)" Foreground="#2F4F4F" />
-                        <ComboBox x:Name="PhaseComboBox" Background="White" BorderBrush="#8B0000">
-                            <ComboBoxItem Content="Консультация" />
-                            <ComboBoxItem Content="Создание ТЗ" />
-                            <ComboBoxItem Content="Выпуск документации" />
-                            <ComboBoxItem Content="Шефмонтаж" />
-                            <ComboBoxItem Content="В работе" />
-                            <ComboBoxItem Content="Завершен" />
-                        </ComboBox>
+                        <TextBlock Text="Цена за единицу (руб.)" Foreground="#2F4F4F" />
+                        <TextBox x:Name="PricePerUnitTextBox" Watermark="Введите цену за ед." Background="White"
+                                 BorderBrush="#8B0000" />
 
-                        <TextBlock Text="Дата завершения" Foreground="#2F4F4F" />
-                        <DatePicker x:Name="EndDatePicker" Background="White" BorderBrush="#8B0000" />
+                        <TextBlock Text="Фиксированная цена (руб.)" Foreground="#2F4F4F" />
+                        <TextBox x:Name="FixedPriceTextBox" Watermark="Введите фикс. цену" Background="White"
+                                 BorderBrush="#8B0000" />
+
+                        <TextBlock Text="Услуги (описание)" Foreground="#2F4F4F" />
+                        <TextBox x:Name="ServicesTextBox" Watermark="Введите описание услуг" Background="White"
+                                 BorderBrush="#8B0000" TextWrapping="Wrap" AcceptsReturn="True" Height="80" />
 
                         <!-- Кнопки -->
-                        <Button x:Name="AddProjectButton"
-                                Click="AddProject"
+                        <Button x:Name="AddTariffButton"
+                                Click="AddTariff"
                                 Content="Добавить"
                                 Margin="0,10,0,5"
                                 Background="#32CD32"
                                 Foreground="White" BorderThickness="0" />
-                        <Button x:Name="EditProjectButton"
-                                Click="UpdateProject"
+                        <Button x:Name="EditTariffButton"
+                                Click="UpdateTariff"
                                 Content="Сохранить"
                                 Margin="0,5"
                                 Background="#4169E1"
                                 Foreground="White" BorderThickness="0" />
-                        <Button x:Name="DeleteProjectButton"
-                                Click="DeleteProject"
+                        <Button x:Name="DeleteTariffButton"
+                                Click="DeleteTariff"
                                 Content="Удалить"
                                 Margin="0,5"
                                 Background="#FF6347"
                                 Foreground="White" BorderThickness="0" />
-                        <Button x:Name="RefreshButton" Content="Обновить" Click="LoadData123" Margin="0,10,0,0" Background="#696969"
+                        <Button x:Name="RefreshButton"
+                                Content="Обновить"
+                                Click="LoadData123"
+                                Margin="0,10,0,0"
+                                Background="#696969"
                                 Foreground="White" BorderThickness="0" />
                     </StackPanel>
                 </DockPanel>
@@ -104,4 +105,5 @@
                 MinWidth="100" Background="#808080" Foreground="White" BorderThickness="0" Click="CloseWindow"/>
 
     </Grid>
+
 </Window>

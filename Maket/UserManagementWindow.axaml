@@ -84,8 +84,7 @@
             </Border>
         </Grid>
 
-        <!-- Кнопка закрытия -->
-        <Button x:Name="CloseButton" Grid.Row="2" Content="Закрыть" HorizontalAlignment="Right" Margin="0,20,0,0"
+        <Button x:Name="CloseButton" Grid.Row="2" Click="CloseWindow" Content="Закрыть" HorizontalAlignment="Right" Margin="0,20,0,0"
                 MinWidth="100" Background="#808080" Foreground="White" BorderThickness="0" />
 
     </Grid>

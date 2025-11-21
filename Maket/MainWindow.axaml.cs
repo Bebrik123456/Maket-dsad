@@ -49,7 +49,7 @@ public partial class MainWindow : Window
     
     public void OpenProjectWindow(object sender, RoutedEventArgs e)
     {
-        var projectWindow = new ProjectWindow();
+        var projectWindow = new TariffWindow();
         projectWindow.Show(); 
         this.Close(); 
     }
