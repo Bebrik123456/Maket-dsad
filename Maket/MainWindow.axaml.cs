@@ -26,11 +26,9 @@ public partial class MainWindow : Window
         // Проверяем, не является ли _currentUser null (хотя в твоём случае вряд ли)
         if (_currentUser != null)
         {
-            // Используем свойства переданного экземпляра _currentUser
-            NameTextBlock.Text = _currentUser.UserName; // Отображаем UserName
-            RoleTextBlock.Text = _currentUser.Role; // Отображаем Role
+            NameTextBlock.Text = _currentUser.UserName;
+            RoleTextBlock.Text = _currentUser.Role; 
 
-            // Показываем кнопку "Управление пользователями", если роль - "Администратор"
             ManageUsersButton.IsVisible = (_currentUser.Role == "Администратор");
         }
         else
@@ -40,6 +38,20 @@ public partial class MainWindow : Window
             RoleTextBlock.Text = "";
             ManageUsersButton.IsVisible = false;
         }
+    }
+    
+    public void TariffWinClick(object sender, RoutedEventArgs e)
+    {
+    TariffWindow tariffWindow = new TariffWindow(); 
+    tariffWindow.Show();
+    this.Close();
+    }
+    
+    public void OpenProjectWindow(object sender, RoutedEventArgs e)
+    {
+        var projectWindow = new ProjectWindow();
+        projectWindow.Show(); 
+        this.Close(); 
     }
 
     public void ToUserManagment(object sender, RoutedEventArgs e)

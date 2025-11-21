@@ -42,7 +42,31 @@
                     FontSize="16"
                     Foreground="Azure"
                     IsVisible="False"
-                    Click="ToUserManagment"/> <!-- Скрыта по умолчанию -->
+                    Click="ToUserManagment"/>
+            <Button x:Name="ProjectWin"
+                    MinWidth="250"
+                    MinHeight="40"
+                    HorizontalAlignment="Center"
+                    Margin="0 50 0 0"
+                    Background="#007ACC"
+                    Content="Управление проектами"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    FontSize="16"
+                    Foreground="Azure"
+                    Click="OpenProjectWindow"/>
+            <Button x:Name="TariffWin"
+                    MinWidth="250"
+                    MinHeight="40"
+                    HorizontalAlignment="Center"
+                    Margin="0 50 0 0"
+                    Background="#007ACC"
+                    Content="Управление тарифами"
+                    HorizontalContentAlignment="Center"
+                    VerticalContentAlignment="Center"
+                    FontSize="16"
+                    Foreground="Azure"
+                   Click="TariffWinClick"/>
 
         </StackPanel>
     </StackPanel>
